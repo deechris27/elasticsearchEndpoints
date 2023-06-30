@@ -24,7 +24,9 @@ POST localhost:9200/replace with index name/_doc
            "authstrategy": {"type":"text", "enabled": false},
            "errors": {"type": "object"},
            "requestschema": {"type":"object", "enabled": false},
-           "version": {"type": "text"}
+           "version": {"type": "text"},
+           "server": {"type":"text"},
+           "service": {"type":"text"}
        }
     }
 }
@@ -46,7 +48,9 @@ POST localhost:9200/replace with index name/_doc
            "queue": {"type": "text"},
            "exchange": {"type":"text"},
            "message": {"type":"text"},
-           "version": {"type": "text"}
+           "version": {"type": "text"},
+           "server": {"type":"text"},
+           "service": {"type":"text"}
        }
     }
 }
@@ -56,8 +60,12 @@ POST localhost:9200/replace with index name/_search
 
 {
   "query": {
-    "query_string": {
-      "query": "provide tag version here"
+    "bool": {
+      "must": [
+        { "match": { "version": "v1-0" }},
+        { "match": { "service":  "some-service" }},
+        { "match": { "server":  "dev" }}
+      ]
     }
   }
 }

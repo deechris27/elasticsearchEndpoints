@@ -11,11 +11,15 @@ app.get("/", (req, res) => {
 
 app.post("/getapidocuments", (request, response) => {
   const requestQuery = {
-    query: {
-      query_string: {
-        query: request.body.version,
-      },
-    },
+    "query": {
+      "bool": {
+        "must": [
+          { "match": { "version": "tag-v1-0" }},
+          { "match": { "service":  "subscription-service" }},
+          { "match": { "server":  "production" }}
+        ]
+      }
+    }
   };
   axios({
     method: "post",
@@ -33,12 +37,16 @@ app.post("/getapidocuments", (request, response) => {
 
 app.post("/getampdocuments", (request, response) => {
     const requestQuery = {
-      query: {
-        query_string: {
-          query: request.body.version,
-        },
-      },
-    };
+        "query": {
+          "bool": {
+            "must": [
+              { "match": { "version": "v1-0" }},
+              { "match": { "service":  "some-service" }},
+              { "match": { "server":  "dev" }}
+            ]
+          }
+        }
+      };
     axios({
       method: "post",
       url: `http://localhost:9200/replace the amp index here/_search`,
