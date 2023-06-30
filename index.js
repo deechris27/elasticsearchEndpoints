@@ -19,7 +19,7 @@ app.post("/getapidocuments", (request, response) => {
   };
   axios({
     method: "post",
-    url: `http://localhost:9200/usa-service-docgen-apiendpoints/_search`,
+    url: `http://localhost:9200/replace the api index here/_search`,
     data: requestQuery,
     headers: { "content-type": "application/json" },
   })
@@ -41,7 +41,7 @@ app.post("/getampdocuments", (request, response) => {
     };
     axios({
       method: "post",
-      url: `http://localhost:9200/usa-service-docgen-amp/_search`,
+      url: `http://localhost:9200/replace the amp index here/_search`,
       data: requestQuery,
       headers: { "content-type": "application/json" },
     })
