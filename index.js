@@ -13,7 +13,7 @@ app.post("/getapidocuments", (request, response) => {
   const requestQuery = {
     query: {
       query_string: {
-        query: request.body.title,
+        query: request.body.version,
       },
     },
   };
@@ -35,7 +35,7 @@ app.post("/getampdocuments", (request, response) => {
     const requestQuery = {
       query: {
         query_string: {
-          query: request.body.title,
+          query: request.body.version,
         },
       },
     };
