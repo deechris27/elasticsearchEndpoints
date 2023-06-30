@@ -14,9 +14,9 @@ app.post("/getapidocuments", (request, response) => {
     "query": {
       "bool": {
         "must": [
-          { "match": { "version": "tag-v1-0" }},
-          { "match": { "service":  "subscription-service" }},
-          { "match": { "server":  "production" }}
+          { "match": { "version": "tag-v1-0" }}, // change the version value to request.body.version or however required
+          { "match": { "service":  "subscription-service" }}, // change the version value to request.body.service or however required
+          { "match": { "server":  "production" }} // change the version value to request.body.server or however required
         ]
       }
     }
